@@ -2,7 +2,7 @@ import { useState,useEffect,Fragment } from "react"
 import SideBar from "../../components/molecules/sidebar"
 import Header from "../../components/molecules/header"
 import { Transition } from "@headlessui/react"
-import Table from "../../components/molecules/table"
+import TableProduct from "../../components/molecules/tableProduct"
 import {useDispatch, useSelector} from "react-redux"
 import { productAction } from "../../store/product/reducer"
 import { Link } from "react-router-dom"
@@ -78,64 +78,10 @@ export default function DashboardOperator(){
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
         <h1 className="mb-2 text-xl pb-5">Data Product :</h1>
-        <Link to="/addProduct"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer mr-2">New Product</button></Link>
-        <Link to="/addProducts"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">Add Product use Redux</button></Link>
-        <Table productList={listProduct}/>
+        <Link to="/addProducts"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New Product</button></Link>
+        <TableProduct productList={listProduct}/>
       </div>
     </main>
     </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Header from "../../components/molecules/header"
-// import Table from "../../components/molecules/table"
-// // import Sidebar from "../../components/molecules/sidebar"
-// // import { useEffect } from "react"
-// // import axios from "../../utils/axios"
-
-
-// function DashboardOperator(){
-//   return(
-//     <>
-//     {/* <Header/> */}
-//     <div className="w-full">
-//       <Header/>
-//       <main className="min-h-screen">
-//         {/* <Sidebar/> */}
-//         <section className="w-full">
-//           {/* MAIN CONTENT */}
-//           <Table/>
-//           {/* END MAIN CONTENT */}
-//         </section>
-//       </main>      
-//     </div>
-//     </>
-//   )
-// }
-
-// export default DashboardOperator

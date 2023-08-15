@@ -37,80 +37,33 @@ const productSlice = createSlice({
         }
       }
     })
-    builder.addCase(addProductThunk.pending, (state)=>{
-      return{
-        ...state,
-        list:{
-          ...state.list,
-          isLoading:true
-        }
-      }
-    }),
-    builder.addCase(addProductThunk.fulfilled, (state, action)=>{
-      return{
-        ...state,
-        list:{
-          ...state.list,
-          isLoading:false,
-          // data: [...state.list.data, action.payload],
-          data: action.payload,
-        }
-      }
-    }),
-    builder.addCase(addProductThunk.rejected, (state, action)=>{
-      return{
-        ...state,
-        list:{
-          ...state.list,
-          isLoading:false,
-          isError: true,
-          errorMessage: action.error.message,
-        }
-      }
-    })
-    //Update
-    builder.addCase(updateProductThunk.pending, (state) => {
-      return {
-        ...state,
-        list: {
-          ...state.list,
-          isLoading: true,
-        },
-      };
-    });
-    builder.addCase(updateProductThunk.fulfilled, (state, action) => {
-      return {
-        ...state,
-        list: {
-          ...state.list,
-          isLoading: false,
-          data: action.payload,
-        },
-      };
-    });
-    builder.addCase(updateProductThunk.rejected, (state, action) => {
-      return {
-        ...state,
-        list: {
-          ...state.list,
-          isLoading: false,
-          isError: true,
-          errorMessage: action.error.message,
-        },
-      };
-    });
-    //Delete
-    builder.addCase(deleteProductThunk.rejected, (state, action)=>{
-      return{
-        ...state,
-        list:{
-          ...state.list,
-          ...state.list,
-          isLoading:false,
-          data: action.payload,
-        }
-      }
-    })
+    // builder.addCase(getDetailProductsThunk.pending, (state)=>{
+    //   return{
+    //     detail:{
+    //       ...state.detail,
+    //       isLoading:true
+    //     }
+    //   }
+    // }),
+    // builder.addCase(getDetailProductsThunk.fulfilled, (state, action)=>{
+    //   return{
+    //     detail:{
+    //       ...state.detail,
+    //       isLoading:false,
+    //       data: action.payload
+    //     }
+    //   }
+    // }),
+    // builder.addCase(getDetailProductsThunk.rejected, (state, action)=>{
+    //   return{
+    //     detail:{
+    //       ...state.detail,
+    //       isLoading:false,
+    //       isError: true,
+    //       errorMessage: action.error.message,
+    //     }
+    //   }
+    // })
   }
 })
 

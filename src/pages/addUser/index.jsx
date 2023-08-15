@@ -1,51 +1,22 @@
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
-import { updateProductThunk, getDetailProductsThunk } from "../../store/product/action"
+import { addUsersThunk } from "../../store/user/actions"
 import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom";
+import { useState } from "react"
 
-const UpdateProduct = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const dispatch = useDispatch()
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const history = useHistory()
-    let {id} = useParams()
-  // const { idProduct } = useParams();
-  useEffect(()=>{
-    dispatch(getDetailProductsThunk(id))
-    .then((result)=>{
-      console.log(result)
-      console.log(result.payload.result.description)
-      setProductData(
-        {
-        ...productData,
-        names:result.payload.result.names,  
-        price:result.payload.result.price,       
-        description:result.payload.result.description,
-        // picture:result.payload.result.picture,
-        stock:result.payload.result.stock,
-      })
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-  },[])
-
-
-  const [productData, setProductData] = useState({
-    names: "",
-    price: "",
-    description: "",
+const AddUser = () =>{
+  const [userData, setUserData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
     picture: null,
-    stock: "",
+    role: "",
   })
-  // console.log(id)
-
-
+  const dispatch = useDispatch()
+  const history = useHistory()
   
   const handleInputChange = (e) => {
-    setProductData({
-      ...productData,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     })
   }
@@ -54,7 +25,7 @@ const UpdateProduct = () => {
     const file = e.target.files[0]
     if (file) {
       // Mendapatkan nama file dari objek File dan menyimpannya ke dalam inputData
-      setProductData({ ...productData, picture: file })
+      setUserData({ ...userData, picture: file })
     }
   };
 
@@ -62,26 +33,26 @@ const UpdateProduct = () => {
     e.preventDefault()
     try {
       // Kirim data produk ke action addProductThunk
-      await dispatch(updateProductThunk({id,productData}));
+      await dispatch(addUsersThunk(userData));
+
       // Jika permintaan POST berhasil, lakukan redirect ke halaman lain
-      console.log("Data Berhasil di update")
-      history.push("/product")
+      console.log("Data Berhasil di post")
+      history.push("/user")
     } catch (error) {
-      console.error("Error adding update:", error.message);
+      console.error("Error adding product:", error.message);
     }
   }
-  return (
+  return(
     <>
     <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8 p-4 bg-white shadow-md rounded-md">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
-        Name:
+        Fullname:
       </label>
       <input
         type="text"
-        id="names"
-        name="names"
-        value={productData.names}
+        id="fullname"
+        name="fullname"
         onChange={handleInputChange}
         required
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -89,26 +60,27 @@ const UpdateProduct = () => {
       </div>
       <div className="mb-4">
         <label htmlFor="price" className="block text-gray-700 text-sm font-bold mb-2">
-          Price:
+          Email
         </label>
         <input
-          type="number"
-          id="price"
-          name="price"
-          value={productData.price}
+          type="email"
+          id="email"
+          name="email"
+          value={userData.email}
           onChange={handleInputChange}
+          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">
-          Description:
+        <label htmlFor="price" className="block text-gray-700 text-sm font-bold mb-2">
+          Password
         </label>
-        <textarea
-          id="description"
-          name="description"
-          value={productData.description}
-          // onChange={e => setInputData({...inputData, description:e.target.value})}
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={userData.password}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -122,20 +94,19 @@ const UpdateProduct = () => {
           type="file"
           id="picture"
           name="picture"
-          value={productData.picture}
           onChange={handleFileChange}
+          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
       <div className="mb-4">
         <label htmlFor="stock" className="block text-gray-700 text-sm font-bold mb-2">
-          Stock:
+          Role
         </label>
         <input
           type="number"
-          id="stock"
-          name="stock"
-          value={productData.stock}
+          id="role"
+          name="role"
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -145,11 +116,11 @@ const UpdateProduct = () => {
         type="submit"
         className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
       >
-        Update Product
+        Create User
       </button>
     </form>
     </>
-  );
-};
+  )
+}
 
-export default UpdateProduct;
+export default AddUser

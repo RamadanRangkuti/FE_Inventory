@@ -3,51 +3,47 @@ import {Switch, Route, Redirect} from "react-router-dom"
 import Login from "../pages/login"
 import DashboarAdmin from "../pages/dashboardAdmin"
 import DashboardOperator from "../pages/dashboardOperator"
+import TestRedux from '../pages/testRedux'
 import Home from '../pages/home'
-import User from '../pages/user'
-import Product from '../pages/product'
 import NotFound from '../pages/notFound'
-import AddProduct from '../pages/addProduct'
 import AddProducts from '../pages/addProducts'
+import AddUser from '../pages/addUser'
 import UpdateProduct from '../pages/updateProduct'
+import UpdateUser from "../pages/updateUser"
 import { useSelector } from "react-redux"
 
 const Router = () =>{
   return(
     <Switch>
-      <Route exact path="/">
-        <Home/>
+      <Route path="/testRedux">
+        <TestRedux/>
       </Route>
-
-      {/* AUTH */}
-      <Route path="/login">
+      <Route exact path="/">
         <Login/>
       </Route>
+      <Route path="/home">
+        <Home/>
+      </Route>
+      {/* AUTH */}
       {/* Admin */}
-      <PrivateRoute path="/admin">
+      <PrivateRoute path="/user">
         <DashboarAdmin/>
       </PrivateRoute>
       {/* Operator */}
-      {/* <Route path="/operator">
-        <DashboardOperator/>
-      </Route> */}
-      <PrivateRoute path="/operator">
+      <PrivateRoute path="/product">
         <DashboardOperator/>
       </PrivateRoute>
-      <Route path="/user">
-        <User/>
-      </Route>
-      <Route path="/product">
-        <Product/>
-      </Route>
-      <Route path="/addProduct">
-        <AddProduct/>
-      </Route>
       <Route path="/addProducts">
         <AddProducts/>
       </Route>
+      <Route path="/addUser">
+        <AddUser/>
+      </Route>
       <Route path="/updateProduct/:id">
         <UpdateProduct/>
+      </Route>
+      <Route path="/updateUser/:id">
+        <UpdateUser/>
       </Route>
       <Route exact path="/*">
         <NotFound/>

@@ -43,7 +43,7 @@ const addProducts = ()=>{
 
       // Jika permintaan POST berhasil, lakukan redirect ke halaman lain
       console.log("Data Berhasil di post")
-      history.push("/operator")
+      history.push("/product")
     } catch (error) {
       console.error("Error adding product:", error.message);
     }

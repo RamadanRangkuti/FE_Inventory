@@ -2,16 +2,16 @@ import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux";
 import { deleteProductThunk } from "../../../store/product/action";
-const Table = ({productList}) =>{ 
+const Stock = ({productList}) =>{ 
   const dispatch = useDispatch();
 
   const handleDelete = (productId) => {
     dispatch(deleteProductThunk(productId))
     .then(()=>{
       // Refresh the page after successful deletion
-      console.log("berhasil delete 1")
+      // console.log("berhasil delete 1")
       window.location.reload()
-      console.log("berhasil delete 2")
+      // console.log("berhasil delete 2")
     })
     .catch((error)=>{
       console.log("Delete product Error:", error)
@@ -65,8 +65,8 @@ const Table = ({productList}) =>{
 }
 
 //mendaftarkan props beserta tipe datanya
-Table.propTypes = {
+Stock.propTypes = {
   productList: PropTypes.array
 }
 
-export default Table
+export default Stock

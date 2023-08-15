@@ -33,11 +33,12 @@ function Login(){
       console.log({"ini user role": userRole})
       
      if(isAuthenticated){
-      if(userRole==0){
-        history.push("/admin")
-      }else if(userRole==1){
-        history.push("/operator")
-      }
+      history.push("/home")
+      // if(userRole==0){
+      //   history.push("/home")
+      // }else if(userRole==1){
+      //   history.push("/home")
+      // }
      }
     }).catch((err)=>{
       console.log(err.message)

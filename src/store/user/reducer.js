@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getListUsersThunk } from "./actions";
+import { getListUsersThunk,getDetailUsersThunk, addUsersThunk, updateUsersThunk, deleteUsersThunk } from "./actions";
 import { initialState } from "./initialState";
 
 const userSlice = createSlice ({
@@ -44,6 +44,10 @@ const userSlice = createSlice ({
 export const userAction = {
   ...userSlice.actions,
   getListUsersThunk,
+  getDetailUsersThunk,
+  addUsersThunk,
+  updateUsersThunk,
+  deleteUsersThunk
 }
 //reducer import di konfigurasi store
 export const userReducer = userSlice.reducer

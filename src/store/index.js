@@ -11,14 +11,14 @@ import {
   PURGE
 } from "redux-persist"
 import storage from "redux-persist/lib/storage"
-import { homeReducer } from "./home/reducer";
+import { TestReduxReducer } from "./testRedux/reducer";
 import {userReducer} from "./user/reducer"
 import { authReducer } from "./auth/reducer";
 import { productReducer } from "./product/reducer";
 //menggabungkan state,action, reducer
 //ini reducer
 const reducers = combineReducers({
-  home: homeReducer,
+  testRedux: TestReduxReducer,
   user: userReducer,
   auth: authReducer,
   product: productReducer,

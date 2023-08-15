@@ -7,8 +7,8 @@ const initialState = {
 }
 
 //state,action, reducer
-const homeSlice = createSlice ({
-  name: "home",
+const TestReduxSlice = createSlice ({
+  name: "testRedux",
   initialState,
   //ini bisa dilakukan karna syhncronus jika fetch dari api tidak bisa letak reducers disitu
   reducers:{
@@ -28,6 +28,6 @@ const homeSlice = createSlice ({
 })
 
 //action import di pages
-export const homeAction = homeSlice.actions
+export const testReduxAction = TestReduxSlice.actions
 //reducer import di konfigurasi store
-export const homeReducer = homeSlice.reducer
+export const TestReduxReducer = TestReduxSlice.reducer

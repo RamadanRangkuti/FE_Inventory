@@ -1,7 +1,6 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-// const API_URL = 'http://localhost:5000/api/v1/products'
 export const getListProductsThunk = createAsyncThunk("getListProducts/request", async(_, {getState})=>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
@@ -12,10 +11,9 @@ export const getListProductsThunk = createAsyncThunk("getListProducts/request", 
   return response.data
 })
 
-export const getDetailProductsThunk = createAsyncThunk("getDetailProducts/request", async(_, {getState})=>{
-  // console.log(getState().auth.data.result.token)
+export const getDetailProductsThunk = createAsyncThunk("getDetailProducts/request", async(id, {getState})=>{
   const token = getState().auth.data.result.token
-  const response = await axios.get("http://localhost:5000/api/v1/products/31136719-03e2-415f-998d-9f68388f911d",{ headers:{
+  const response = await axios.get(`http://localhost:5000/api/v1/products/${id}`,{ headers:{
     token:token
   }}
   )

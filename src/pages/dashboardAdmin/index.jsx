@@ -2,10 +2,10 @@ import { useState,useEffect,Fragment } from "react"
 import SideBar from "../../components/molecules/sidebar"
 import Header from "../../components/molecules/header"
 import { Transition } from "@headlessui/react"
-// import Table from "../../components/molecules/table"
-import TableUser from "../../components/molecules/tableuser"
+import TableUser from "../../components/molecules/tableUser"
 import {useDispatch, useSelector} from "react-redux"
 import { userAction } from "../../store/user/reducer"
+import { Link } from "react-router-dom"
 
 
 export default function DashboardOperator(){
@@ -74,6 +74,7 @@ export default function DashboardOperator(){
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
         <h1 className="mb-2 text-xl">Data User :</h1>
+        <Link to="/addUser"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New User</button></Link>
         <TableUser userList={listUser}/>
       </div>
     </main>

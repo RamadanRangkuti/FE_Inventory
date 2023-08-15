@@ -10,9 +10,13 @@ import { BellIcon, CheckIcon } from "@heroicons/react/24/outline";
 import { Menu, Transition, Popover } from "@headlessui/react";
 import { Link } from "react-router-dom"
 import Profil from "../../../assets/image/man-smiling.jpg"
+import { useSelector } from "react-redux"
 
 
+// eslint-disable-next-line react/prop-types
 export default function Header({ showNav, setShowNav }){
+  const userName = useSelector((state) => state.auth.data.result.user.fullname)
+  // console.log(userName)
   return(
   <>
    <div className={`fixed bg-sky-100 w-full shadow h-16 flex justify-between items-center transition-all duration-[400ms] ${
@@ -114,7 +118,7 @@ export default function Header({ showNav, setShowNav }){
                 />
               </picture>
               <span className="hidden md:block font-medium text-gray-700">
-                Ramadan
+                {userName}
               </span>
               <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-700" />
             </Menu.Button>
