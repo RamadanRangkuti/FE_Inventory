@@ -1,10 +1,10 @@
 import { useState,useEffect,Fragment } from "react"
-import SideBar from "../../components/molecules/sidebar"
-import Header from "../../components/molecules/header"
+import SideBar from "../../../components/molecules/sidebar"
+import Header from "../../../components/molecules/header"
 import { Transition } from "@headlessui/react"
-import TableUser from "../../components/molecules/tableUser"
+import TableUser from "../../../components/molecules/tableUser"
 import {useDispatch, useSelector} from "react-redux"
-import { userAction } from "../../store/user/reducer"
+import { userAction } from "../../../store/user/reducer"
 import { Link } from "react-router-dom"
 
 

@@ -1,22 +1,26 @@
 /* eslint-disable react/prop-types */
 import {Switch, Route, Redirect} from "react-router-dom"
 import Login from "../pages/login"
-import DashboarAdmin from "../pages/dashboardAdmin"
-import DashboardOperator from "../pages/dashboardOperator"
+import DashboarAdmin from "../pages/admin/user"
+import DashboardOperator from "../pages/operator/product"
 import TestRedux from '../pages/testRedux'
-import Home from '../pages/home'
+import Home from '../pages/homePage'
 import NotFound from '../pages/notFound'
-import AddProducts from '../pages/addProducts'
-import AddUser from '../pages/addUser'
-import UpdateProduct from '../pages/updateProduct'
-import UpdateUser from "../pages/updateUser"
+import AddProduct from '../pages/operator/addProduct'
+import AddUser from '../pages/admin/addUser'
+import UpdateProduct from '../pages/operator/updateProduct'
+import UpdateUser from "../pages/admin/updateUser"
+import Stock from "../pages/operator/stock"
+import StockIn from "../pages/operator/stockIn"
+import StockOut from "../pages/operator/stockOut"
+import StockEdit from "../pages/operator/stockEdit"
 import { useSelector } from "react-redux"
 
 const Router = () =>{
   return(
     <Switch>
       <Route path="/testRedux">
-        <TestRedux/>
+        <TestRedux/>  
       </Route>
       <Route exact path="/">
         <Login/>
@@ -29,22 +33,37 @@ const Router = () =>{
       <PrivateRoute path="/user">
         <DashboarAdmin/>
       </PrivateRoute>
-      {/* Operator */}
-      <PrivateRoute path="/product">
-        <DashboardOperator/>
-      </PrivateRoute>
-      <Route path="/addProducts">
-        <AddProducts/>
-      </Route>
       <Route path="/addUser">
         <AddUser/>
-      </Route>
-      <Route path="/updateProduct/:id">
-        <UpdateProduct/>
       </Route>
       <Route path="/updateUser/:id">
         <UpdateUser/>
       </Route>
+      {/* end Admin */}
+      {/* Operator */}
+      <PrivateRoute path="/product">
+        <DashboardOperator/>
+      </PrivateRoute>
+      <Route path="/addproduct">
+        <AddProduct/>
+      </Route>
+      <Route path="/updateProduct/:id">
+        <UpdateProduct/>
+      </Route>
+      <Route path="/stock">
+        <Stock/>
+      </Route>
+      <Route path="/stockin">
+        <StockIn/>
+      </Route>
+      <Route path="/stockout">
+        <StockOut/>
+      </Route>
+      <Route path="/stockedit">
+        <StockEdit/>
+      </Route>
+      {/* end Operator */}
+
       <Route exact path="/*">
         <NotFound/>
       </Route>

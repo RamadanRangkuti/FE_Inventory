@@ -8,14 +8,14 @@ const TableUser = ({userList: initialUserList}) =>{
 
   const [userList, setUserList] = useState(initialUserList);
   const handleDelete = (userId) => {
-    const confirmed = window.confirm("Are you sure you want to delete this product?");
+    const confirmed = window.confirm("Are you sure you want to delete this product?")
     if (confirmed) {
       dispatch(deleteUsersThunk(userId))
         .then(() => {
-          setUserList(prevList => prevList.filter(item => item.id_user !== userId));
+          setUserList(prevList => prevList.filter(item => item.id_user !== userId))
         })
         .catch((error) => {
-          console.log("Delete user Error:", error);
+          console.log("Delete user Error:", error)
         });
     }
   }

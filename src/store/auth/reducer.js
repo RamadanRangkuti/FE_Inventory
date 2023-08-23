@@ -1,5 +1,5 @@
+import axios from "axios"
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
-import axios from "../../utils/axios";
 
 const initialState = {
   data: null,
@@ -13,7 +13,7 @@ const initialState = {
 //action
 export const loginThunk = createAsyncThunk("login/request", async ({email,password}) =>{
   const response = await axios.post(
-    "auth/login",{
+    "http://localhost:5000/api/v1/auth/login",{
       email,
       password,
     }

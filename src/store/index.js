@@ -15,6 +15,7 @@ import { TestReduxReducer } from "./testRedux/reducer";
 import {userReducer} from "./user/reducer"
 import { authReducer } from "./auth/reducer";
 import { productReducer } from "./product/reducer";
+import {stockReducer} from "./stock/reducer"
 //menggabungkan state,action, reducer
 //ini reducer
 const reducers = combineReducers({
@@ -22,13 +23,14 @@ const reducers = combineReducers({
   user: userReducer,
   auth: authReducer,
   product: productReducer,
+  stock: stockReducer,
 })
 //persist config
 const persistConfig = {
   //key local storage
   key:"data",
   storage,
-  blacklist:["user","product"] //reducers yang tidak mau di masukkan ke persist
+  blacklist:["user","product", "stock"] //reducers yang tidak mau di masukkan ke persist
 }
 
 //persist reducer

@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 import { HomeIcon, CreditCardIcon, UserIcon,ArrowLeftIcon } from "@heroicons/react/24/solid"
 import PropTypes from "prop-types"
 
+// eslint-disable-next-line no-unused-vars
 const SideBar = forwardRef(({showNav}, ref) => {
   //Acces Role
   const userRole = useSelector((state) => state.auth.data.result.user.role)

@@ -1,45 +1,29 @@
 import { useState,useEffect,Fragment } from "react"
-import SideBar from "../../components/molecules/sidebar"
-import Header from "../../components/molecules/header"
+import SideBar from "../../../components/molecules/sidebar"
+import Header from "../../../components/molecules/header"
 import { Transition } from "@headlessui/react"
-import TableProduct from "../../components/molecules/tableProduct"
+import TableStock from "../../../components/molecules/tableStock"
 import {useDispatch, useSelector} from "react-redux"
-import { productAction } from "../../store/product/reducer"
+import {getListStockThunk} from "../../../store/stock/action"
 import { Link } from "react-router-dom"
 
-
-export default function DashboardOperator(){
+export default function Home(){
   const [showNav, setShowNav] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
   const dispatch = useDispatch()
-  const listProduct = useSelector((state) => state.product.list.data.result)
-  
+  const stockList = useSelector((state)=>state.stock.list.data.result)
 
   useEffect(()=>{
-    dispatch(productAction.getListProductsThunk())
+    dispatch(getListStockThunk())
     .then(()=>{
-      // Ketika data selesai diambil, set isLoading menjadi false
       setIsLoading(false)
     })
-    .catch((error)=>{
-      console.error("Error fetching products: ", error)
+    .catch(()=>{
       setIsLoading(false)
     })
   },[])
-
-
-  const handleResize=()=>{
-    //640 default mobile tailwind css
-    if(innerWidth <=640){
-      setShowNav(false)
-      setIsMobile(true)
-    }else{
-      setShowNav(true)
-      setIsMobile(false)
-    }
-  }
 
   useEffect(()=>{
     // eslint-disable-next-line valid-typeof
@@ -52,7 +36,18 @@ export default function DashboardOperator(){
     }
   },[])
 
-  if (listProduct === undefined) {
+  const handleResize=()=>{
+    //640 default mobile tailwind css
+    if(innerWidth <=640){
+      setShowNav(false)
+      setIsMobile(true)
+    }else{
+      setShowNav(true)
+      setIsMobile(false)
+    }
+  }
+
+  if (stockList === undefined) {
     return <div>Loading...</div>;
   }
 
@@ -77,9 +72,13 @@ export default function DashboardOperator(){
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
-        <h1 className="mb-2 text-xl pb-5">Data Product :</h1>
-        <Link to="/addProducts"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New Product</button></Link>
-        <TableProduct productList={listProduct}/>
+        <h1 className="m-4">List of Stock History: </h1>
+        <div className="mb-4">
+          <Link to="/stockin" className="px-2 bg-sky-500 p-2 rounded-xl">Stock In</Link>
+          <Link to="/stockedit" className="px-2 bg-amber-400 p-2 rounded-xl">Stock Edit</Link>
+          <Link to="/stockout" className="px-2 bg-rose-400 p-2 rounded-xl mx-2">Stock Out</Link>
+        </div>
+        <TableStock stockList = {stockList}/>
       </div>
     </main>
     </>

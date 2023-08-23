@@ -32,14 +32,8 @@ function Login(){
       console.log(isAuthenticated)
       console.log({"ini user role": userRole})
       
-     if(isAuthenticated){
       history.push("/home")
-      // if(userRole==0){
-      //   history.push("/home")
-      // }else if(userRole==1){
-      //   history.push("/home")
-      // }
-     }
+      // if(userRole==0
     }).catch((err)=>{
       console.log(err.message)
     })
@@ -77,7 +71,7 @@ function Login(){
             <div className="border-t border-gray-400 flex-grow ml-2"></div>
           </div>
           
-          <button className="font-serif flex justify-center items-center text-xs sm:text-sm bg-sky-100 text-slate-600 border py-4 w-full font-semibold rounded-xl mt-2 hover:bg-sky-200"> <FcGoogle className="w-[35px]"/>Login With Google</button>
+          <button onClick={()=>alert("Coming Soon.!!!")} className="font-serif flex justify-center items-center text-xs sm:text-sm bg-sky-100 text-slate-600 border py-4 w-full font-semibold rounded-xl mt-2 hover:bg-sky-200"> <FcGoogle className="w-[35px]"/>Login With Google</button>
         </div>
 
         <div className="md:flex hidden w-1/2">

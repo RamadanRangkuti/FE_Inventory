@@ -1,9 +1,33 @@
 import { useDispatch } from "react-redux"
-import { addUsersThunk } from "../../store/user/actions"
+import { updateUsersThunk, getDetailUsersThunk } from "../../../store/user/actions"
 import { useHistory } from "react-router-dom"
-import { useState } from "react"
+import { useEffect,useState } from "react"
+import { useParams } from "react-router-dom";
 
-const AddUser = () =>{
+const UpdateUser = () =>{
+  const dispatch = useDispatch()
+  const history = useHistory()
+  let {id} = useParams()
+
+  useEffect(()=>{
+    dispatch(getDetailUsersThunk(id))
+    .then((result)=>{
+      console.log(result)
+      setUserData(
+        {
+        ...userData,
+        fullname:result.payload.result.fullname,  
+        email:result.payload.result.email,       
+        password:result.payload.result.password,
+        // picture:result.payload.result.picture,
+        role:result.payload.result.role,
+      })
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  },[])
+
   const [userData, setUserData] = useState({
     fullname: "",
     email: "",
@@ -11,8 +35,6 @@ const AddUser = () =>{
     picture: null,
     role: "",
   })
-  const dispatch = useDispatch()
-  const history = useHistory()
   
   const handleInputChange = (e) => {
     setUserData({
@@ -33,7 +55,7 @@ const AddUser = () =>{
     e.preventDefault()
     try {
       // Kirim data produk ke action addProductThunk
-      await dispatch(addUsersThunk(userData));
+      await dispatch(updateUsersThunk({id,userData}));
 
       // Jika permintaan POST berhasil, lakukan redirect ke halaman lain
       console.log("Data Berhasil di post")
@@ -66,7 +88,6 @@ const AddUser = () =>{
           type="email"
           id="email"
           name="email"
-          value={userData.email}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -80,7 +101,6 @@ const AddUser = () =>{
           type="password"
           id="password"
           name="password"
-          value={userData.password}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -116,11 +136,11 @@ const AddUser = () =>{
         type="submit"
         className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
       >
-        Create User
+        Update User
       </button>
     </form>
     </>
   )
 }
 
-export default AddUser
+export default UpdateUser

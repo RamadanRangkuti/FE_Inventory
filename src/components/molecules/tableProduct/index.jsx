@@ -1,23 +1,24 @@
-import { useState } from "react"
+// import { useState } from "react"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
-import { useDispatch } from "react-redux"
-import { deleteProductThunk } from "../../../store/product/action"
-const TableProduct = ({productList: initialProductList }) =>{ 
-  const dispatch = useDispatch();
+// import { useDispatch } from "react-redux"
+// import { deleteProductThunk } from "../../../store/product/action"
+const TableProduct = ({productList}) =>{ 
+  // const dispatch = useDispatch();
 
-  const [productList, setProductList] = useState(initialProductList);
+  // const [productList, setProductList] = useState(initialProductList);
   const handleDelete = (productId) => {
-    const confirmed = window.confirm("Are you sure you want to delete this product?")
-    if (confirmed) {
-      dispatch(deleteProductThunk(productId))
-        .then(() => {
-          setProductList(prevList => prevList.filter(item => item.id_product !== productId))
-        })
-        .catch((error) => {
-          console.log("Delete product Error:", error)
-        })
-    }
+    console.log(productId)
+    // const confirmed = window.confirm("Are you sure you want to delete this product?")
+    // if (confirmed) {
+    //   dispatch(deleteProductThunk(productId))
+    //     .then(() => {
+    //       setProductList(prevList => prevList.filter(item => item.id_product !== productId))
+    //     })
+    //     .catch((error) => {
+    //       console.log("Delete product Error:", error)
+    //     })
+    // }
   }
   return(
     <>

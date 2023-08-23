@@ -1,28 +1,22 @@
-
 import { useDispatch } from "react-redux"
-import { addProductThunk } from "../../store/product/action"
-// import axios from "axios"
+import { addUsersThunk } from "../../../store/user/actions"
 import { useHistory } from "react-router-dom"
 import { useState } from "react"
-const addProducts = ()=>{
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [productData, setProductData] = useState({
-    names: "",
-    price: "",
-    description: "",
+
+const AddUser = () =>{
+  const [userData, setUserData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
     picture: null,
-    stock: "",
+    role: "",
   })
-
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const dispatch = useDispatch()
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const history = useHistory()
   
   const handleInputChange = (e) => {
-    setProductData({
-      ...productData,
+    setUserData({
+      ...userData,
       [e.target.name]: e.target.value,
     })
   }
@@ -31,7 +25,7 @@ const addProducts = ()=>{
     const file = e.target.files[0]
     if (file) {
       // Mendapatkan nama file dari objek File dan menyimpannya ke dalam inputData
-      setProductData({ ...productData, picture: file })
+      setUserData({ ...userData, picture: file })
     }
   };
 
@@ -39,11 +33,11 @@ const addProducts = ()=>{
     e.preventDefault()
     try {
       // Kirim data produk ke action addProductThunk
-      await dispatch(addProductThunk(productData));
+      await dispatch(addUsersThunk(userData));
 
       // Jika permintaan POST berhasil, lakukan redirect ke halaman lain
       console.log("Data Berhasil di post")
-      history.push("/product")
+      history.push("/user")
     } catch (error) {
       console.error("Error adding product:", error.message);
     }
@@ -53,12 +47,12 @@ const addProducts = ()=>{
     <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8 p-4 bg-white shadow-md rounded-md">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
-        Name:
+        Fullname:
       </label>
       <input
         type="text"
-        id="names"
-        name="names"
+        id="fullname"
+        name="fullname"
         onChange={handleInputChange}
         required
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -66,25 +60,27 @@ const addProducts = ()=>{
       </div>
       <div className="mb-4">
         <label htmlFor="price" className="block text-gray-700 text-sm font-bold mb-2">
-          Price:
+          Email
         </label>
         <input
-          type="number"
-          id="price"
-          name="price"
+          type="email"
+          id="email"
+          name="email"
+          value={userData.email}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">
-          Description:
+        <label htmlFor="price" className="block text-gray-700 text-sm font-bold mb-2">
+          Password
         </label>
-        <textarea
-          id="description"
-          name="description"
-          // onChange={e => setInputData({...inputData, description:e.target.value})}
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={userData.password}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -105,12 +101,12 @@ const addProducts = ()=>{
       </div>
       <div className="mb-4">
         <label htmlFor="stock" className="block text-gray-700 text-sm font-bold mb-2">
-          Stock:
+          Role
         </label>
         <input
           type="number"
-          id="stock"
-          name="stock"
+          id="role"
+          name="role"
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -120,11 +116,11 @@ const addProducts = ()=>{
         type="submit"
         className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
       >
-        Create Product
+        Create User
       </button>
     </form>
     </>
   )
 }
 
-export default addProducts
+export default AddUser

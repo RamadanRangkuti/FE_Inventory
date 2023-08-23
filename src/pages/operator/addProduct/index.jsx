@@ -1,37 +1,11 @@
-import { useEffect, useState } from "react";
+
 import { useDispatch } from "react-redux"
-import { updateProductThunk, getDetailProductsThunk } from "../../store/product/action"
+import { addProductThunk } from "../../../store/product/action"
+// import axios from "axios"
 import { useHistory } from "react-router-dom"
-import { useParams } from "react-router-dom";
-
-const UpdateProduct = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const dispatch = useDispatch()
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const history = useHistory()
-    let {id} = useParams()
-  // const { idProduct } = useParams();
-  useEffect(()=>{
-    dispatch(getDetailProductsThunk(id))
-    .then((result)=>{
-      console.log(result)
-      console.log(result.payload.result.description)
-      setProductData(
-        {
-        ...productData,
-        names:result.payload.result.names,  
-        price:result.payload.result.price,       
-        description:result.payload.result.description,
-        // picture:result.payload.result.picture,
-        stock:result.payload.result.stock,
-      })
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-  },[])
-
-
+import { useState } from "react"
+const addProducts = ()=>{
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [productData, setProductData] = useState({
     names: "",
     price: "",
@@ -39,9 +13,12 @@ const UpdateProduct = () => {
     picture: null,
     stock: "",
   })
-  // console.log(id)
 
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const dispatch = useDispatch()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const history = useHistory()
   
   const handleInputChange = (e) => {
     setProductData({
@@ -62,17 +39,18 @@ const UpdateProduct = () => {
     e.preventDefault()
     try {
       // Kirim data produk ke action addProductThunk
-      await dispatch(updateProductThunk({id,productData}));
+      await dispatch(addProductThunk(productData));
+
       // Jika permintaan POST berhasil, lakukan redirect ke halaman lain
-      console.log("Data Berhasil di update")
+      console.log("Data Berhasil di post")
       history.push("/product")
     } catch (error) {
-      console.error("Error adding update:", error.message);
+      console.error("Error adding product:", error.message);
     }
   }
-  return (
+  return(
     <>
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8 p-4 bg-white shadow-md rounded-md">
+    <form onSubmit={handleSubmit} className="max-w-4xl mx-auto my-8 p-4 bg-white shadow-md rounded-md">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
         Name:
@@ -81,7 +59,6 @@ const UpdateProduct = () => {
         type="text"
         id="names"
         name="names"
-        value={productData.names}
         onChange={handleInputChange}
         required
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -95,8 +72,8 @@ const UpdateProduct = () => {
           type="number"
           id="price"
           name="price"
-          value={productData.price}
           onChange={handleInputChange}
+          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
@@ -107,7 +84,6 @@ const UpdateProduct = () => {
         <textarea
           id="description"
           name="description"
-          value={productData.description}
           // onChange={e => setInputData({...inputData, description:e.target.value})}
           onChange={handleInputChange}
           required
@@ -122,8 +98,8 @@ const UpdateProduct = () => {
           type="file"
           id="picture"
           name="picture"
-          value={productData.picture}
           onChange={handleFileChange}
+          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
@@ -135,7 +111,6 @@ const UpdateProduct = () => {
           type="number"
           id="stock"
           name="stock"
-          value={productData.stock}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -145,11 +120,11 @@ const UpdateProduct = () => {
         type="submit"
         className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
       >
-        Update Product
+        Create Product
       </button>
     </form>
     </>
-  );
-};
+  )
+}
 
-export default UpdateProduct;
+export default addProducts

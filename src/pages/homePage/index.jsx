@@ -11,24 +11,6 @@ import { Transition } from "@headlessui/react"
 export default function Home(){
   const [showNav, setShowNav] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  // const [isLoading, setIsLoading] = useState(true);
-
-  // const dispatch = useDispatch()
-  // const listProduct = useSelector((state) => state.product.list.data.result)
-  
-
-  // useEffect(()=>{
-  //   dispatch(productAction.getListProductsThunk())
-  //   .then(()=>{
-  //     // Ketika data selesai diambil, set isLoading menjadi false
-  //     setIsLoading(false)
-  //   })
-  //   .catch((error)=>{
-  //     console.error("Error fetching products: ", error)
-  //     setIsLoading(false)
-  //   })
-  // },[])
-
 
   const handleResize=()=>{
     //640 default mobile tailwind css
@@ -51,15 +33,6 @@ export default function Home(){
       removeEventListener("resize",handleResize)
     }
   },[])
-
-  // if (listProduct === undefined) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-
   return(
     <>
     <Header showNav={showNav} setShowNav={setShowNav}/>
