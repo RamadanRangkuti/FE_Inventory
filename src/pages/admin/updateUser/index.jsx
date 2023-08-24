@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux"
 import { updateUsersThunk, getDetailUsersThunk } from "../../../store/user/actions"
 import { useHistory } from "react-router-dom"
 import { useEffect,useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 
 const UpdateUser = () =>{
   const dispatch = useDispatch()
@@ -18,8 +18,8 @@ const UpdateUser = () =>{
         ...userData,
         fullname:result.payload.result.fullname,  
         email:result.payload.result.email,       
-        password:result.payload.result.password,
-        // picture:result.payload.result.picture,
+        password:"",
+        picture:result.payload.result.picture,
         role:result.payload.result.role,
       })
     })
@@ -35,6 +35,7 @@ const UpdateUser = () =>{
     picture: null,
     role: "",
   })
+  console.log(id)
   
   const handleInputChange = (e) => {
     setUserData({
@@ -66,7 +67,7 @@ const UpdateUser = () =>{
   }
   return(
     <>
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8 p-4 bg-white shadow-md rounded-md">
+    <form onSubmit={handleSubmit} className="max-w-5xl mx-auto my-8 p-4 bg-white shadow-md rounded-md">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
         Fullname:
@@ -75,6 +76,7 @@ const UpdateUser = () =>{
         type="text"
         id="fullname"
         name="fullname"
+        value={userData.fullname}
         onChange={handleInputChange}
         required
         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -88,6 +90,7 @@ const UpdateUser = () =>{
           type="email"
           id="email"
           name="email"
+          value={userData.email}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -101,6 +104,7 @@ const UpdateUser = () =>{
           type="password"
           id="password"
           name="password"
+          value={userData.password}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
@@ -115,7 +119,6 @@ const UpdateUser = () =>{
           id="picture"
           name="picture"
           onChange={handleFileChange}
-          required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
@@ -127,17 +130,18 @@ const UpdateUser = () =>{
           type="number"
           id="role"
           name="role"
+          value={userData.role}
           onChange={handleInputChange}
           required
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-      >
-        Update User
-      </button>
+      <div className="mt-2">
+        <Link to="/user"><button className="mr-5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-10  rounded-md focus:outline-none focus:ring focus:ring-yellow -200">Back</button></Link>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+          Update User
+        </button>
+      </div>
     </form>
     </>
   )

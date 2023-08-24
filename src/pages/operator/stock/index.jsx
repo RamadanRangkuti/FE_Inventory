@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {getListStockThunk} from "../../../store/stock/action"
 import { Link } from "react-router-dom"
 
-export default function Home(){
+export default function Stock(){
   const [showNav, setShowNav] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -74,7 +74,7 @@ export default function Home(){
       <div className="p-4 md:px-16">
         <h1 className="m-4">List of Stock History: </h1>
         <div className="mb-4">
-          <Link to="/stockin" className="px-2 bg-sky-500 p-2 rounded-xl">Stock In</Link>
+          <Link to="/stockin" className="px-2 bg-sky-500 p-2 mr-2 rounded-xl">Stock In</Link>
           <Link to="/stockedit" className="px-2 bg-amber-400 p-2 rounded-xl">Stock Edit</Link>
           <Link to="/stockout" className="px-2 bg-rose-400 p-2 rounded-xl mx-2">Stock Out</Link>
         </div>

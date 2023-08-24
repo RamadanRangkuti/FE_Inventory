@@ -19,7 +19,7 @@ export default function Header({ showNav, setShowNav }){
   // console.log(userName)
   return(
   <>
-   <div className={`fixed bg-sky-100 w-full shadow h-16 flex justify-between items-center transition-all duration-[400ms] ${
+   <div className={`fixed bg-gray-100 w-full shadow h-16 flex justify-between items-center transition-all duration-[400ms] ${
         showNav ? "pl-56" : ""}`}>
       <div className="pl-4 md:pl-16">
         <Bars3CenterLeftIcon
@@ -170,71 +170,3 @@ export default function Header({ showNav, setShowNav }){
   </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from "react"
-// // import Search from "../../../assets/icon/search.svg"
-// import Hamburger from "../../../assets/icon/hamburger.svg"
-// import Sidebar from "../sidebar"
-
-// const Header = () =>{
-//   const [dropDownProfile, setDropDownProfile] = useState(false)
-//   const [sidebar, setSidebar] = useState(false)
-
-//   return(
-//     <>
-//     <header className="flex items-center shadow p-2 justify-between">
-//       <div onClick={()=>setSidebar(!sidebar)} className="md:justify-start cursor-pointer">
-//       {sidebar && <Sidebar closeSidebar={() => setSidebar(false)} />}
-//         <img src={Hamburger} alt="hamburger" className="w-6 h-5" />
-//       </div>
-//       <div className="flex gap-x-5 mr-10 cursor-pointer">
-//         {/* <img src={Search} alt="" className="w-4 h-4"/> */}
-//         <h4>Ramadan Rangkuti</h4>
-//         <img onClick={()=> setDropDownProfile(!dropDownProfile)} className="w-5 h-5 md:w-[25px] md:h-[25px] md:w-[30px] md:h-[30px] rounded-full cursor-pointer" src="https://picsum.photos/id/230/200/300" alt=""/>
-//       </div>
-//       {
-//           dropDownProfile?(
-//             <div className="absolute top-10 right-6 z-50 font-sm bg-slate-200 py-2 px-5 shadow">
-//             <ul>
-//               <li>Profile</li>
-//               <li>Setting</li>
-//               <li>Logout</li>
-//             </ul>
-//           </div>
-//           ):null
-//         }
-//     </header>
-  
-//     </>
-//   )
-// }
-
-// export default Header

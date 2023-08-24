@@ -1,17 +1,17 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 
-// export const getListProductsThunk = createAsyncThunk("getListProducts/request", async( filter, {getState})=>{
-//   // console.log(getState().auth.data.result.token)
-//   // console.log(`page : ${page}`)
-//   console.log(filter)
-//   const token = getState().auth.data.result.token
-//   const response = await axios.get(`http://localhost:5000/api/v1/products?search=${filter.search}&sortBy=asc&sortField=names&page=${filter.page}&limit=${filter.limit}`,{ headers:{
-//     token:token
-//   }}
-//   )
-//   return response.data
-// })
+export const geFilterProductsThunk = createAsyncThunk("getFiltertProducts/request", async( filter, {getState})=>{
+  // console.log(getState().auth.data.result.token)
+  // console.log(`page : ${page}`)
+  console.log(filter)
+  const token = getState().auth.data.result.token
+  const response = await axios.get(`http://localhost:5000/api/v1/products?search=${filter.search}&sortBy=asc&sortField=names&page=${filter.page}&limit=${filter.limit}`,{ headers:{
+    token:token
+  }}
+  )
+  return response.data
+})
 
 export const getListProductsThunk = createAsyncThunk("getListProducts/request", async( _, {getState})=>{
   // console.log(getState().auth.data.result.token)

@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux"
 import { addProductThunk } from "../../../store/product/action"
 // import axios from "axios"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import { useState } from "react"
 const addProducts = ()=>{
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -116,12 +116,12 @@ const addProducts = ()=>{
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-      >
-        Create Product
-      </button>
+      <div className="mt-2">
+        <Link to="/product"><button className="mr-5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-10  rounded-md focus:outline-none focus:ring focus:ring-yellow -200">Back</button></Link>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+          Add Product
+        </button>
+      </div>
     </form>
     </>
   )

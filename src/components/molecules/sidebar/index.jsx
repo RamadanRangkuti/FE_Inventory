@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { forwardRef } from "react";
 // import Logo from "../../../assets/image/ferox-transparent.png"
 import { Link, useHistory } from "react-router-dom"
-import { HomeIcon, CreditCardIcon, UserIcon,ArrowLeftIcon } from "@heroicons/react/24/solid"
+import { HomeIcon, CreditCardIcon, UserIcon,ArrowLeftIcon,FolderIcon } from "@heroicons/react/24/solid"
 import PropTypes from "prop-types"
 
 // eslint-disable-next-line no-unused-vars
@@ -21,28 +21,28 @@ const SideBar = forwardRef(({showNav}, ref) => {
   }
   return(
   <>
-  <div ref={ref} className="fixed w-56 h-full bg-white shadow-sm">
+  <div ref={ref} className="fixed w-56 h-full bg-slate-50">
     {/* <div className="flex justify-center mt-6 mb-14">
       <picture>
       </picture>
       <img className="w-32 h-auto" src={Logo} alt="#"/>
     </div> */}
-
+    
     <div className="flex flex-col">
       <Link to="/home">
-        <div className={`pl-6 py-3 pt-5 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+        <div className={`pl-6 py-3 pt-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
             <HomeIcon className="h-5 w-5" />
           </div>
           <div>
-            <p>Home</p>
+            <p>Dashboard</p>
           </div>
         </div>
       </Link>
       {
         userRole==="0"?(
           <Link to="/user">
-          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
             <UserIcon className="h-5 w-5" />
           </div>
@@ -56,9 +56,9 @@ const SideBar = forwardRef(({showNav}, ref) => {
       {
         userRole==="1"?(
           <Link to="/product">
-          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
             <div className="mr-2">
-              <CreditCardIcon className="h-5 w-5" />
+              <FolderIcon className="h-5 w-5" />
             </div>
             <div>
               <p>Product</p>
@@ -70,7 +70,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
       {
         userRole==="1"?(
           <Link to="/stock">
-          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+          <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
             <div className="mr-2">
               <CreditCardIcon className="h-5 w-5" />
             </div>
@@ -83,7 +83,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
       }
       
       {/* <Link to="/admin">
-        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
             <UserIcon className="h-5 w-5" />
           </div>
@@ -93,7 +93,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
         </div>
       </Link> */}
       {/* <Link to="/operator">
-        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
             <CreditCardIcon className="h-5 w-5" />
           </div>
@@ -103,7 +103,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
         </div>
       </Link> */}
       <button onClick={handleLogout}>
-        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-400 hover:bg-orange-100 hover:text-orange-500`}>
+        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-00 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
             <ArrowLeftIcon className="h-5 w-5" />
           </div>

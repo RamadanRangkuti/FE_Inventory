@@ -2,6 +2,8 @@ import { useState,useEffect,Fragment } from "react"
 import SideBar from "../../components/molecules/sidebar"
 import Header from "../../components/molecules/header"
 import { Transition } from "@headlessui/react"
+import { StarIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+// import ManSmile from "../../assets/image/man-smiling.jpg"
 // import Table from "../../components/molecules/table"
 // import {useDispatch, useSelector} from "react-redux"
 // import { productAction } from "../../store/product/reducer"
@@ -49,63 +51,22 @@ export default function Home(){
       <SideBar showNav={showNav}/>
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
-      <div className="p-4 md:px-16">
-        <h1>INI ADALAH PAGE HOME</h1>
+      <div className="p-6 mb-2">
+        <h1 className="text-2xl font-semibold">Dashboard</h1>
+      </div>
+      <div className="flex justify-between items-center bg-sky-400 text-white p-5 rounded-xl mx-2">
+        <div className="flex gap-x-2">
+          <StarIcon className="w-5"/>
+          <h1 className="text-xl font-semibold">Start this project on Github</h1>
+        </div>
+        <a href="https://github.com/RamadanRangkuti/FE_Inventory" target="_blank" rel="noopener noreferrer" className="text-white">
+          <div className="flex gap-x-3 cursor-pointer">
+            <h1 className="font-bold">View More</h1>
+            <ArrowRightIcon className="w-5 mr-8"/>
+          </div>
+        </a>        
       </div>
     </main>
     </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import Header from "../../components/molecules/header"
-// import Table from "../../components/molecules/table"
-// // import Sidebar from "../../components/molecules/sidebar"
-// // import { useEffect } from "react"
-// // import axios from "../../utils/axios"
-
-
-// function DashboardOperator(){
-//   return(
-//     <>
-//     {/* <Header/> */}
-//     <div className="w-full">
-//       <Header/>
-//       <main className="min-h-screen">
-//         {/* <Sidebar/> */}
-//         <section className="w-full">
-//           {/* MAIN CONTENT */}
-//           <Table/>
-//           {/* END MAIN CONTENT */}
-//         </section>
-//       </main>      
-//     </div>
-//     </>
-//   )
-// }
-
-// export default DashboardOperator

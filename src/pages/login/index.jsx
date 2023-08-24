@@ -20,22 +20,23 @@ function Login(){
   })
   
    //REDUX 
-   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-   const userRole = useSelector((state) => state.auth.data?.result?.user.role)
+  //  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  //  const userRole = useSelector((state) => state.auth.data?.result?.user.role)
   const submit = (e) =>{
     e.preventDefault()
     dispatch(authAction.loginThunk({email: form.email, password:form.password}))
     .unwrap()
-    .then((response)=>{
+    .then(()=>{
       //direct berdasarkan role
-      console.log({"ini response":response})
-      console.log(isAuthenticated)
-      console.log({"ini user role": userRole})
+      // console.log({"ini response":response})
+      // console.log(isAuthenticated)
+      // console.log({"ini user role": userRole})
       
       history.push("/home")
       // if(userRole==0
-    }).catch((err)=>{
-      console.log(err.message)
+    }).catch(()=>{
+      // console.log(err.message)
+      alert("Login failed. Please check your email and password.")
     })
   }
 

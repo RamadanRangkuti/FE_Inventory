@@ -25,19 +25,19 @@ const TableUser = ({userList: initialUserList}) =>{
             <table className="min-w-full bg-white">
               <thead>
                 <tr>
-                  <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  <th className="text-center px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Fullname
                   </th>
-                  <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  <th className="text-center px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  <th className="text-center px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Picture
                   </th>
-                  <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  <th className="text-center px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  <th className="text-center px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Action
                   </th>
                 </tr>
@@ -45,15 +45,18 @@ const TableUser = ({userList: initialUserList}) =>{
           <tbody className="divide-y divide-gray-200">
             {userList.map((item,i) => (
               <tr key={i}>
-                <td className="px-6 py-4 whitespace-nowrap">{item.fullname}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="text-center px-6 py-4 whitespace-nowrap">{item.fullname}</td>
+                <td className="text-center px-6 py-4 whitespace-nowrap">{item.email}</td>
+                <td className="flex justify-center item-center text-center px-6 py-4 whitespace-nowrap">
                   <img src={`http://localhost:5000/uploads/images/${item.picture}`} alt={item.name} className="h-10 w-10 rounded-xl" />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">{item.role}</td>
+                <td className="text-center px-6 py-4 whitespace-nowrap">{item.role == 1 ? "operator": item.role == 0 ? "admin" : ""}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <Link to={`/updateUser/${item.id_user}`} className="px-2 bg-sky-300 p-2 rounded-xl mx-2">Update</Link>
-                  <button onClick={() => handleDelete(item.id_user)} className="px-2 bg-rose-400 p-2 rounded-xl">Delete</button></td>
+                  <div className="flex justify-center gap-x-2">
+                    <Link to={`/updateUser/${item.id_user}`} className="px-2 bg-sky-300 p-2 rounded-xl mx-2">Update</Link>
+                    <button onClick={() => handleDelete(item.id_user)} className="px-2 bg-rose-400 p-2 rounded-xl">Delete</button>  
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { updateProductThunk, getDetailProductsThunk } from "../../../store/product/action"
-import { useHistory } from "react-router-dom"
+import { useHistory,Link } from "react-router-dom"
 import { useParams } from "react-router-dom";
 
 const UpdateProduct = () => {
@@ -22,7 +22,7 @@ const UpdateProduct = () => {
         names:result.payload.result.names,  
         price:result.payload.result.price,       
         description:result.payload.result.description,
-        // picture:result.payload.result.picture,
+        picture:result.payload.result.picture,
         stock:result.payload.result.stock,
       })
     })
@@ -72,7 +72,7 @@ const UpdateProduct = () => {
   }
   return (
     <>
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto my-8 p-4 bg-white shadow-md rounded-md">
+    <form onSubmit={handleSubmit} className="max-w-6xl mx-auto my-8 p-4 bg-white shadow-md rounded-md">
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
         Name:
@@ -122,7 +122,7 @@ const UpdateProduct = () => {
           type="file"
           id="picture"
           name="picture"
-          value={productData.picture}
+          // value={productData.picture}
           onChange={handleFileChange}
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
@@ -141,12 +141,12 @@ const UpdateProduct = () => {
           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
         />
       </div>
-      <button
-        type="submit"
-        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-      >
-        Update Product
-      </button>
+      <div className="mt-2">
+        <Link to="/product"><button className="mr-5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-10  rounded-md focus:outline-none focus:ring focus:ring-yellow -200">Back</button></Link>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+          Update Product
+        </button>
+      </div>
     </form>
     </>
   );

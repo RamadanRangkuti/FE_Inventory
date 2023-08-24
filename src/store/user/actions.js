@@ -37,7 +37,7 @@ export const addUsersThunk = createAsyncThunk("addUsers/request",async(userData,
   return response.data
 })
 
-export const updateUsersThunk = createAsyncThunk("updateUsers/request",async ({id,userData}, { getState }) => {
+export const updateUsersThunk = createAsyncThunk("updateUsers/request",async ({id, userData}, { getState }) => {
     const token = getState().auth.data.result.token;
     const response = await axios.patch(`http://localhost:5000/api/v1/users/${id}`,userData,
       {

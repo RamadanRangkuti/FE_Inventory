@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 import {Switch, Route, Redirect} from "react-router-dom"
 import Login from "../pages/login"
-import DashboarAdmin from "../pages/admin/user"
-import DashboardOperator from "../pages/operator/product"
-import TestRedux from '../pages/testRedux'
+import User from "../pages/admin/user"
+import Product from "../pages/operator/product"
 import Home from '../pages/homePage'
 import NotFound from '../pages/notFound'
 import AddProduct from '../pages/operator/addProduct'
@@ -19,51 +18,47 @@ import { useSelector } from "react-redux"
 const Router = () =>{
   return(
     <Switch>
-      <Route path="/testRedux">
-        <TestRedux/>  
-      </Route>
-      <Route exact path="/">
+      <PublicRoute exact path="/">
         <Login/>
-      </Route>
-      <Route path="/home">
+      </PublicRoute>
+      <PrivateRoute path="/home">
         <Home/>
-      </Route>
+      </PrivateRoute>
       {/* AUTH */}
       {/* Admin */}
       <PrivateRoute path="/user">
-        <DashboarAdmin/>
+        <User/>
       </PrivateRoute>
-      <Route path="/addUser">
+      <PrivateRoute path="/addUser">
         <AddUser/>
-      </Route>
-      <Route path="/updateUser/:id">
+      </PrivateRoute>
+      <PrivateRoute path="/updateUser/:id">
         <UpdateUser/>
-      </Route>
+      </PrivateRoute>
       {/* end Admin */}
       {/* Operator */}
       <PrivateRoute path="/product">
-        <DashboardOperator/>
+        <Product/>
       </PrivateRoute>
       <Route path="/addproduct">
         <AddProduct/>
       </Route>
-      <Route path="/updateProduct/:id">
+      <PrivateRoute path="/updateProduct/:id">
         <UpdateProduct/>
-      </Route>
-      <Route path="/stock">
+      </PrivateRoute>
+      <PrivateRoute path="/stock">
         <Stock/>
-      </Route>
-      <Route path="/stockin">
+      </PrivateRoute>
+      <PrivateRoute path="/stockin">
         <StockIn/>
-      </Route>
-      <Route path="/stockout">
+      </PrivateRoute>
+      <PrivateRoute path="/stockout">
         <StockOut/>
-      </Route>
-      <Route path="/stockedit">
+      </PrivateRoute>
+      <PrivateRoute path="/stockedit">
         <StockEdit/>
-      </Route>
+      </PrivateRoute>
       {/* end Operator */}
-
       <Route exact path="/*">
         <NotFound/>
       </Route>
@@ -78,10 +73,22 @@ const PrivateRoute = ({children, ...rest}) =>{
       return isAuthenticated?(
         children
       ):(
-        <Redirect to={{pathname: "/login"}}/>
+        <Redirect to={{pathname: "/"}}/>
       )
     }}/>
   )
+}
+
+const PublicRoute = ({ children, ...rest }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  // const location = useLocation();
+
+  if (isAuthenticated) {
+    console.log("Tidak bisa akses karna sudah login")
+    // console.log(location.pathname)
+    return <Redirect to={"/home"} />
+  }
+  return <Route {...rest}>{children}</Route>
 }
 
 export default Router

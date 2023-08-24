@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {getListProductsThunk} from "../../../store/product/action"
 import {stockOutThunk} from "../../../store/stock/action"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link} from "react-router-dom"
 import {BiChevronDown} from "react-icons/bi"
 import {AiOutlineSearch} from "react-icons/ai"
 // import backgroundImage from "../../../assets/image/background.png"
@@ -120,13 +120,12 @@ const StockOut = () => {
           </div>
           </div>
 
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-          >
-            Create Product
-          </button>
+          <div className="mt-2">
+            <Link to="/stock"><button className="mr-5 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-10  rounded-md focus:outline-none focus:ring focus:ring-yellow -200">Back</button></Link>
+            <button onClick={handleSubmit} type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-md focus:outline-none focus:ring focus:ring-blue-200">
+              Stock Out
+            </button>
+          </div>
       </form>
     </div>
     </>

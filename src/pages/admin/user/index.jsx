@@ -73,7 +73,7 @@ export default function DashboardOperator(){
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
-        <h1 className="mb-2 text-xl">Data User :</h1>
+        <h1 className="mb-2 text-xl mb-2">Data User :</h1>
         <Link to="/addUser"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New User</button></Link>
         <TableUser userList={listUser}/>
       </div>

@@ -8,7 +8,7 @@ import { productAction } from "../../../store/product/reducer"
 import { Link } from "react-router-dom"
 
 
-export default function DashboardOperator(){
+export default function Product(){
   const [showNav, setShowNav] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -17,7 +17,7 @@ export default function DashboardOperator(){
   const [filter, setFilter] = useState({
     search: "",
     page:1,
-    limit:2
+    limit:5
   })
 
   // console.log(keyword)
@@ -25,9 +25,9 @@ export default function DashboardOperator(){
   const listProduct = useSelector((state) => state.product.list.data.result)
   // console.log(listProduct)
   
-
+  
   useEffect(()=>{
-    dispatch(productAction.getListProductsThunk(filter))
+    dispatch(productAction.geFilterProductsThunk(filter))
     .then(()=>{
       // Ketika data selesai diambil, set isLoading menjadi false
       setIsLoading(false)
@@ -36,7 +36,22 @@ export default function DashboardOperator(){
       console.error("Error fetching products: ", error)
       setIsLoading(false)
     })
-  },[filter.page])
+  },[filter.page,])
+
+  const handleDeleteProduct = (productId) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this product?")
+
+    if(shouldDelete){
+      dispatch(productAction.deleteProductThunk(productId))
+      .then(()=>{
+        // console.log('Deleting product with ID:', productId)
+        dispatch(productAction.geFilterProductsThunk(filter));
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    }
+  }
 
   useEffect(()=>{
     // eslint-disable-next-line valid-typeof
@@ -54,18 +69,21 @@ export default function DashboardOperator(){
   }
 
   const handleSeacrh = () =>{
-    dispatch(productAction.getListProductsThunk(filter))
+    dispatch(productAction.geFilterProductsThunk(filter))
     // console.log(`ini submit keyword ketika button seacrh di klik: ${filter}`)
   }
   
   const handlePageChange = (type) =>{
-    if(type === "plus"){
-      setFilter({...filter, page: filter.page + 1})
-    }else{
-      if(filter.page<=1){
-        setFilter({...filter, page:1})
-      }else{
-        setFilter({...filter, page: filter.page - 1})
+    if (type === "plus") {
+      // Cek apakah masih ada data berikutnya
+      if (listProduct.length === filter.limit) {
+        setFilter({ ...filter, page: filter.page + 1 });
+      }
+    } else {
+      if (filter.page <= 1) {
+        setFilter({ ...filter, page: 1 });
+      } else {
+        setFilter({ ...filter, page: filter.page - 1 });
       }
     }
   }
@@ -126,7 +144,7 @@ export default function DashboardOperator(){
       <button className="cursor-pointer px-3 py-2 bg-sky-200 mx-2 rounded-xl" onClick={handleSeacrh}>Search</button>
         </div>
         
-        <TableProduct productList={listProduct}/>
+        <TableProduct productList={listProduct} onDelete={handleDeleteProduct}/>
         <div className="flex justify-end mt-4 gap-4 cursor-pointer">
         <button className="px-8 py-2 font-bold bg-red-200 cursor-pointer" onClick={()=>handlePageChange("min")}>-</button>
         <button className="px-8 py-2 font-bold bg-sky-200 cursor-pointer" onClick={()=>handlePageChange("plus")}>+</button>
