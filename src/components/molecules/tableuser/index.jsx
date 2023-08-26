@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 import { useDispatch } from "react-redux";
-import { deleteUsersThunk } from "../../../store/user/actions";
+import { deleteUsersThunk } from "../../../store/user/actions"
 const TableUser = ({userList: initialUserList}) =>{ 
   const dispatch = useDispatch();
 
