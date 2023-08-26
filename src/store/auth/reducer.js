@@ -13,7 +13,7 @@ const initialState = {
 //action
 export const loginThunk = createAsyncThunk("login/request", async ({email,password}) =>{
   const response = await axios.post(
-    "http://localhost:5000/api/v1/auth/login",{
+    `${import.meta.env.VITE_API_LOGIN}`,{
       email,
       password,
     }
@@ -65,5 +65,6 @@ export const authAction = {
   ...authSlice.actions,
   loginThunk,
 }
+
 //reducer import di konfigurasi store
 export const authReducer = authSlice.reducer

@@ -81,27 +81,6 @@ const SideBar = forwardRef(({showNav}, ref) => {
           </Link>
         ):null
       }
-      
-      {/* <Link to="/admin">
-        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
-          <div className="mr-2">
-            <UserIcon className="h-5 w-5" />
-          </div>
-          <div>
-            <p>User</p>
-          </div>
-        </div>
-      </Link> */}
-      {/* <Link to="/operator">
-        <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
-          <div className="mr-2">
-            <CreditCardIcon className="h-5 w-5" />
-          </div>
-          <div>
-            <p>Product</p>
-          </div>
-        </div>
-      </Link> */}
       <button onClick={handleLogout}>
         <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-00 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">

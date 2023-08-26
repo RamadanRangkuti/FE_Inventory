@@ -11,7 +11,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const getListUsersThunk = createAsyncThunk("getListUsers/request", async (_,{getState}) =>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
-  const response = await axios.get("http://localhost:5000/api/v1/users",{ headers:{
+  const response = await axios.get(`${import.meta.env.VITE_API_USER}`,{ headers:{
       token:token
     }}
   )
@@ -20,16 +20,17 @@ export const getListUsersThunk = createAsyncThunk("getListUsers/request", async 
 
 export const getDetailUsersThunk = createAsyncThunk("getDetailUsers/request", async(id, {getState})=>{
   const token = getState().auth.data.result.token
-  const response = await axios.get(`http://localhost:5000/api/v1/users/${id}`,{ headers:{
+  const response = await axios.get(`${import.meta.env.VITE_API_USER}/${id}`,{ headers:{
     token:token
   }}
   )
   return response.data
 })
 
+
 export const addUsersThunk = createAsyncThunk("addUsers/request",async(userData, {getState})=>{
   const token = getState().auth.data.result.token
-  const response = await axios.post("http://localhost:5000/api/v1/users", userData,{ headers:{
+  const response = await axios.post(`${import.meta.env.VITE_API_USER}`, userData,{ headers:{
     'Content-Type': 'multipart/form-data',
     token:token
   }}
@@ -39,7 +40,7 @@ export const addUsersThunk = createAsyncThunk("addUsers/request",async(userData,
 
 export const updateUsersThunk = createAsyncThunk("updateUsers/request",async ({id, userData}, { getState }) => {
     const token = getState().auth.data.result.token;
-    const response = await axios.patch(`http://localhost:5000/api/v1/users/${id}`,userData,
+    const response = await axios.patch(`${import.meta.env.VITE_API_USER}/${id}`,userData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -53,7 +54,7 @@ export const updateUsersThunk = createAsyncThunk("updateUsers/request",async ({i
 
 export const deleteUsersThunk = createAsyncThunk("deleteUser/request", async (userId, { getState }) => {
     const token = getState().auth.data.result.token;
-    const response = await axios.delete(`http://localhost:5000/api/v1/users/${userId}`, {
+    const response = await axios.delete(`${import.meta.env.VITE_API_USER}/${userId}`, {
       headers: {
         token: token,
       },
