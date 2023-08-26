@@ -8,7 +8,7 @@ import { userAction } from "../../../store/user/reducer"
 import { Link } from "react-router-dom"
 
 
-export default function DashboardOperator(){
+export default function User(){
   const [showNav, setShowNav] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
