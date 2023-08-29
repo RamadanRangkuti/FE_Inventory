@@ -40,7 +40,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
         </div>
       </Link>
       {
-        userRole==="0"?(
+        userRole==0?(
           <Link to="/user">
           <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
           <div className="mr-2">
@@ -54,7 +54,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
         ):null
       }
       {
-        userRole==="1"?(
+        userRole==1?(
           <Link to="/product">
           <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
             <div className="mr-2">
@@ -68,7 +68,7 @@ const SideBar = forwardRef(({showNav}, ref) => {
         ):null
       }
       {
-        userRole==="1"?(
+        userRole==1?(
           <Link to="/stock">
           <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transtion-colors text-gray-600 hover:bg-sky-100 hover:text-sky-400`}>
             <div className="mr-2">
