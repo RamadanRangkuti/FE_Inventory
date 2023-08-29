@@ -13,7 +13,7 @@ const initialState = {
 //action
 export const loginThunk = createAsyncThunk("login/request", async ({email,password}) =>{
   const response = await axios.post(
-    `${import.meta.env.VITE_API_LOGIN}`,{
+    `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,{
       email,
       password,
     }

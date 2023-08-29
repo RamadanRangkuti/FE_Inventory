@@ -4,7 +4,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit"
 export const getListStockThunk = createAsyncThunk("getListStock/request", async(_, {getState})=>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
-  const response = await axios.get(`${import.meta.env.VITE_API_STOCK}`,{ headers:{
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/stock`,{ headers:{
     token:token
   }}
   )
@@ -14,7 +14,7 @@ export const getListStockThunk = createAsyncThunk("getListStock/request", async(
 export const stockInThunk = createAsyncThunk("stockIn/request", async(stockData, {getState})=>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
-  const response = await axios.post(`${import.meta.env.VITE_API_USER}/in`, stockData, { headers:{
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/stock/in`, stockData, { headers:{
     token:token
   }}
   )
@@ -25,7 +25,7 @@ export const stockInThunk = createAsyncThunk("stockIn/request", async(stockData,
 export const stockEditThunk = createAsyncThunk("stockEdit/request", async(stockData, {getState})=>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
-  const response = await axios.post(`${import.meta.env.VITE_API_USER}/edit`, stockData, { headers:{
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/stock/edit`, stockData, { headers:{
     token:token
   }}
   )
@@ -35,7 +35,7 @@ export const stockEditThunk = createAsyncThunk("stockEdit/request", async(stockD
 export const stockOutThunk = createAsyncThunk("stockOut/request", async(stockData, {getState})=>{
   // console.log(getState().auth.data.result.token)
   const token = getState().auth.data.result.token
-  const response = await axios.post(`${import.meta.env.VITE_API_USER}/out`, stockData, { headers:{
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/stock/out`, stockData, { headers:{
     token:token
   }}
   )
