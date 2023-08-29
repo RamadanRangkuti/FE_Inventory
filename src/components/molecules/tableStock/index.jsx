@@ -35,7 +35,7 @@ const TableStock = ({stockList}) => {
               <tr key={i}>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.dates}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.names}</td>
-                <td className="text-center px-6 py-4 whitespace-nowrap">{item.type === 1 ? "Stok In" : item.type === 2 ? "Stock Out" : item.type === 3 ? "Stock Edit" : ""}</td>
+                <td className="text-center px-6 py-4 whitespace-nowrap">{item.type == 1 ? "Stok In" : item.type == 2 ? "Stock Out" : item.type == 3 ? "Stock Edit" : ""}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.email}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.note}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.qty}</td>

@@ -48,7 +48,7 @@ const TableUser = ({userList: initialUserList}) =>{
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.fullname}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.email}</td>
                 <td className="flex justify-center item-center text-center px-6 py-4 whitespace-nowrap">
-                  <img src={`http://localhost:5000/uploads/images/${item.picture}`} alt={item.name} className="h-10 w-10 rounded-xl" />
+                  <img src={`${import.meta.env.VITE_API_URL}/uploads/images/${item.picture}`} alt={item.name} className="h-10 w-10 rounded-xl" />
                 </td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.role == 1 ? "operator": item.role == 0 ? "admin" : ""}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
