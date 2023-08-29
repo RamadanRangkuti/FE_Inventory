@@ -6,7 +6,7 @@ export const geFilterProductsThunk = createAsyncThunk("getFiltertProducts/reques
   // console.log(`page : ${page}`)
   console.log(filter)
   const token = getState().auth.data.result.token
-  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/produts?search=${filter.search}&sortBy=asc&sortField=names&page=${filter.page}&limit=${filter.limit}`,{ headers:{
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/products?search=${filter.search}&sortBy=asc&sortField=names&page=${filter.page}&limit=${filter.limit}`,{ headers:{
     token:token
   }}
   )

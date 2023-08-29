@@ -36,7 +36,7 @@ export default function Product(){
       console.error("Error fetching products: ", error)
       setIsLoading(false)
     })
-  },[filter.page,])
+  },[filter.page])
 
   const handleDeleteProduct = (productId) => {
     const shouldDelete = window.confirm("Are you sure you want to delete this product?")
