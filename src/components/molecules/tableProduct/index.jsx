@@ -54,7 +54,7 @@ const TableProduct = ({productList, onDelete}) =>{
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.price}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.description}</td>
                 <td className="flex justify-center text-center px-6 py-4 whitespace-nowrap">
-                  <img src={`http://localhost:5000/uploads/images/${item.picture}`} alt={item.name} className="h-10 w-10 rounded-xl" />
+                  <img src={`${import.meta.env.VITE_API_URL}/uploads/images/${item.picture}`} alt={item.name} className="h-10 w-10 rounded-xl" />
                 </td> 
                 <td className="text-center px-6 py-4 whitespace-nowrap">{item.stock}</td>
                 <td className="text-center px-6 py-4 whitespace-nowrap">
