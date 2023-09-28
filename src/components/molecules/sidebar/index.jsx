@@ -21,12 +21,15 @@ const SideBar = forwardRef(({showNav}, ref) => {
   }
   return(
   <>
-  <div ref={ref} className="fixed w-56 h-full bg-slate-50">
+  <div ref={ref} className="fixed w-56 h-full bg-slate-100 shadow shadow-xl rounded">
     {/* <div className="flex justify-center mt-6 mb-14">
       <picture>
       </picture>
       <img className="w-32 h-auto" src={Logo} alt="#"/>
     </div> */}
+    <div className="mt-4 mb-6 ml-11">
+      <h1 className="text-gray-600 hover:bg-sky-100 hover:text-sky-400 font-serif text-3xl"><span className="text-sky-400 text-4xl">I</span>nventory</h1>
+    </div>
     
     <div className="flex flex-col">
       <Link to="/home">

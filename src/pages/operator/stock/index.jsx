@@ -72,11 +72,13 @@ export default function Stock(){
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
-        <h1 className="m-4">List of Stock History: </h1>
-        <div className="mb-4">
-          <Link to="/stockin" className="px-2 bg-sky-500 p-2 mr-2 rounded-xl">Stock In</Link>
-          <Link to="/stockedit" className="px-2 bg-amber-400 p-2 rounded-xl">Stock Edit</Link>
-          <Link to="/stockout" className="px-2 bg-rose-400 p-2 rounded-xl mx-2">Stock Out</Link>
+        <div className="flex justify-between mt-4">
+          <h1 className="font-semibold text-2xl text-sky-500">Stock History: </h1>
+          <div className="mb-4 mt-2">
+            <Link to="/stockin" className="px-6 bg-sky-500 p-2 mr-4 text-white rounded-xl">Stock In</Link>
+            <Link to="/stockedit" className="px-4 bg-amber-400 p-2 rounded-xl text-white">Stock Edit</Link>
+            <Link to="/stockout" className="px-4 bg-rose-400 p-2 rounded-xl mx-4 text-white">Stock Out</Link>
+          </div>
         </div>
         <TableStock stockList = {stockList}/>
       </div>

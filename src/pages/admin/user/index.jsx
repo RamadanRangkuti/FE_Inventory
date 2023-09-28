@@ -72,9 +72,11 @@ export default function User(){
       <SideBar showNav={showNav}/>
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
-      <div className="p-4 md:px-16">
-        <h1 className="mb-2 text-xl mb-2">Data User :</h1>
-        <Link to="/addUser"><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New User</button></Link>
+      <div className="p-6 mt-px md:px-16">
+        <div className="flex justify-between">
+          <h1 className="font-semibold text-2xl text-sky-500">Data User </h1>
+          <Link to="/addUser"><button className="bg-sky-300 p-2 px-6 rounded-xl mb-4 mb-2 pointer md:mr-20">+ Add New User</button></Link>
+        </div>
         <TableUser userList={listUser}/>
       </div>
     </main>

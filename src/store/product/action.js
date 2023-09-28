@@ -27,7 +27,7 @@ export const getListProductsThunk = createAsyncThunk("getListProducts/request", 
 
 export const getDetailProductsThunk = createAsyncThunk("getDetailProducts/request", async(id, {getState})=>{
   const token = getState().auth.data.result.token
-  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/${id}`,{ headers:{
+  const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/products/${id}`,{ headers:{
     token:token
   }}
   )
@@ -48,7 +48,7 @@ export const updateProductThunk = createAsyncThunk("updateProduct/request",async
     const token = getState().auth.data.result.token;
     // const productId = productData.id_product;
     // console.log(productData)
-    const response = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/${id}`,productData,
+    const response = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/products/${id}`,productData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -62,7 +62,7 @@ export const updateProductThunk = createAsyncThunk("updateProduct/request",async
 
 export const deleteProductThunk = createAsyncThunk("deleteProduct/request", async (productId, { getState }) => {
     const token = getState().auth.data.result.token;
-    const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/${productId}`, {
+    const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/products/${productId}`, {
       headers: {
         token: token,
       },

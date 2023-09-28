@@ -17,7 +17,7 @@ export default function Product(){
   const [filter, setFilter] = useState({
     search: "",
     page:1,
-    limit:5
+    limit:6
   })
 
   // console.log(keyword)
@@ -126,28 +126,28 @@ export default function Product(){
     </Transition>
     <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile? "pl-56":""}`}>
       <div className="p-4 md:px-16">
-        <h1 className="mb-2 text-xl pb-5">Data Product :</h1>
-        {/* <input type="text" placeholder="Seacrh Product" onChange={(e)=>setKeyword(e.target.value)} className="input input-bordered w-full max-w-xs block my-4" /> */}
-        
-        <Link to="/addproduct" className=""><button className="bg-green-400 p-2 px-4 rounded-xl mb-2 pointer">New Product</button></Link>
-        <div className="flex mb-4">
-          <input
-          type="text"
-          id="search"
-          name="search"
-          placeholder="Seacrh by name"
-          onChange={handleInputChange}
-          value={filter.search}
-          required
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
-      />
-      <button className="cursor-pointer px-3 py-2 bg-sky-200 mx-2 rounded-xl" onClick={handleSeacrh}>Search</button>
+        <h1 className="font-semibold text-2xl text-sky-500 mb-4">Data Product :</h1>
+        <div className="flex justify-between">
+          <div className="flex mb-4">
+              <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Seacrh by name"
+              onChange={handleInputChange}
+              value={filter.search}
+              required
+              className="px-8 py-px border border-gray-300 rounded-xl focus:outline-none focus:ring focus:ring-blue-200"/>
+              <button className="cursor-pointer px-6 py-2 bg-gray-300 mx-2 rounded-xl" onClick={handleSeacrh}>Search</button>
+            </div>
+          {/* <input type="text" placeholder="Seacrh Product" onChange={(e)=>setKeyword(e.target.value)} className="input input-bordered w-full max-w-xs block my-4" /> */}
+          <Link to="/addproduct" className=""><button className="bg-sky-300 p-2 px-4 rounded-xl mb-2 pointer mr-12 text-white shadow">+ Add New Product</button></Link>
         </div>
         
         <TableProduct productList={listProduct} onDelete={handleDeleteProduct}/>
         <div className="flex justify-end mt-4 gap-4 cursor-pointer">
-        <button className="px-8 py-2 font-bold bg-red-200 cursor-pointer" onClick={()=>handlePageChange("min")}>-</button>
-        <button className="px-8 py-2 font-bold bg-sky-200 cursor-pointer" onClick={()=>handlePageChange("plus")}>+</button>
+        <button className="px-6 rounded-md py-2 font-bold text-gray-500 bg-gray-300 cursor-pointer" onClick={()=>handlePageChange("min")}>&lt; prev</button>
+        <button className="px-6 rounded-md py-2 font-bold bg-gray-300 cursor-pointer" onClick={()=>handlePageChange("plus")}>next &gt;</button>
         </div>
       </div>
     </main>
